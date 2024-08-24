@@ -4,6 +4,7 @@ import { ColorfulMessage } from "./components/ColorfulMessage";
 export const App = () => {
     // 好きな変数を入れることができる。numの初期値を入れることができる。
     const [num, setNum] = useState(0);
+    const [isShowFace, setIsShowFace] = useState(true);
     const onClickCountUp = () => {
         // 特定の関数の中でSet関数が呼び出されたときはまとめて処理される＝バッチ処理
         // setNum(num + 1);
@@ -14,6 +15,9 @@ export const App = () => {
         setNum((prev) => prev + 1);
         
     }
+    const onClickToggle = () => {
+        setIsShowFace(!isShowFace)
+    }
     return (
         <>
             <h1 style={{color: "red"}}>こんにちは！！</h1>
@@ -21,6 +25,8 @@ export const App = () => {
             <ColorfulMessage color="green">元気です</ColorfulMessage>
             <button onClick={onClickCountUp}>カウントアップ</button>
             <p>{num}</p>
+            <button onClick={onClickToggle}>on/off</button>
+            {isShowFace && <p>( ﾟДﾟ)</p>}
         </>
     )
 }; 
